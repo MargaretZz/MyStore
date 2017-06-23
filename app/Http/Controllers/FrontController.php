@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Product;
 use App\Category;
 use App\Cart;
+use App\Order;
 
 class FrontController extends Controller
 {
@@ -83,6 +84,12 @@ class FrontController extends Controller
         return view('front.order', ['total' => $total, 'carts' => $carts]);
     }
 
+    public function listOrder()
+    {
+        $orders = Order::where('user_id', Auth::user()->id)->get();
+        return view('front.listOrder', ['orders' => $orders]);
+    }
+
     public function orderPost(Request $request)
     {
         $carts = Cart::where('user_id', Auth::user()->id)->get();
@@ -98,7 +105,10 @@ class FrontController extends Controller
 
         }
         $order->price = $total;
+        $order->phone = $request->phone;
+        $order->address = $request->address;
         
-
+        $order->save();
+        return;
     }
 }

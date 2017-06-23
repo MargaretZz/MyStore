@@ -5,7 +5,7 @@
 <div class="container">
         <div class="input-group-btn">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                下拉菜单 
+                分类 
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu pull-left">
@@ -19,8 +19,6 @@
         <div class="row row-offcanvas row-offcanvas-right">        
             <div class="col-xs-12 col-sm-9">
                 <h3>商品列表</h3>
-                <a href="/admin/product/add"><button type="button" class="btn btn-success" data-toggle="offcanvas">添加商品</button></a>
-                <br>
                 <br>
                 @foreach ($products as $product)
 

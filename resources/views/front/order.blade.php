@@ -41,13 +41,13 @@
         <div class="form-group">
           <label class="col-sm-2 control-label">地址</label>
           <div class="col-sm-10">
-            <input type="text" name="name" class="form-control" placeholder="送货地址">
+            <input type="text" name="address" class="form-control" placeholder="送货地址">
           </div>
           <br>
           <br>
           <label class="col-sm-2 control-label">电话</label>
           <div class="col-sm-10">
-            <input type="text" name="name" class="form-control" placeholder="电话">
+            <input type="text" name="phone" class="form-control" placeholder="电话">
           </div>
 
         </div>

@@ -46,7 +46,7 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
-                            <li><a href="/order">我的订单 <span class="fa fa-briefcase"></span></a></li>
+                            <li><a href="/order/list">我的订单 <span class="fa fa-briefcase"></span></a></li>
                             <li><a href="/cart">购物车 <span class="fa fa-shopping-cart"></span></a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

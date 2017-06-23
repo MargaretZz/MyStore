@@ -17,7 +17,8 @@ Route::get('/cart/add/{id}', 'FrontController@addCart');
 Route::get('/cart', 'FrontController@getCart');
 Route::get('/cart/delete/{id}', 'FrontController@deleteCart');
 Route::get('/order', 'FrontController@order');
-Route::get('/order/post', 'FrontController@orderPost');
+Route::post('/order/post', 'FrontController@orderPost');
+Route::get('/order/list', 'FrontController@listOrder');
 
 Auth::routes();
 
