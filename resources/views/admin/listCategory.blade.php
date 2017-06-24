@@ -25,7 +25,6 @@
                   <tr>
                     <td>{{ $category->id }}</td>
                     <td>{{ $category->name }}</td>
-                    <td><a href="/admin/product/list/{{ $category->name }}"><button type="button" class="btn btn-primary">浏览商品</button></a></td>
                     <td><a href="/admin/category/delete/{{ $category->id }}"><button type="button" class="btn btn-danger">删除分类</button></a></td>
                   </tr>
                 @endforeach

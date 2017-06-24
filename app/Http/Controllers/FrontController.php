@@ -46,7 +46,7 @@ class FrontController extends Controller
 
     public function getCart(Request $request)
     {
-        $carts = Cart::where('product_id',Auth::user()->id)->get();
+        $carts = Cart::where('user_id',Auth::user()->id)->get();
 
         $total = 0;
         foreach($carts as $cart)
@@ -61,7 +61,7 @@ class FrontController extends Controller
     {
         Cart::destroy($request->id);
 
-         $carts = Cart::where('product_id',Auth::user()->id)->get();
+        $carts = Cart::where('user_id',Auth::user()->id)->get();
 
         $total = 0;
         foreach($carts as $cart)
