@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Category;
 use App\Product;
+use App\Order;
+use App\OrderItem;
 
 class HomeController extends Controller
 {
@@ -26,7 +28,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home', ['categories' => Category::All()]);
+        return view('admin.listCategory', ['categories' => Category::All()]);
     }
 
     public function addCategory()
@@ -84,5 +86,18 @@ class HomeController extends Controller
     {
         Product::destroy($request->id);
         return redirect()->action('HomeController@listProduct');
+    }
+
+
+    public function orderList()
+    {
+        return view('admin.listOrder', ['orders' => Order::All()]);
+    }
+
+    public function orderDetail(Request $request)
+    {
+        $order = Order::find($request->id);
+        $orderItems = OrderItem::where('order_id', $order->id)->get();
+        return view('admin.orderDetail', ['order' => $order, 'orderItems' => $orderItems]);
     }
 }

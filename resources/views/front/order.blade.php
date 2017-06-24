@@ -50,6 +50,10 @@
             <input type="text" name="phone" class="form-control" placeholder="电话">
           </div>
 
+          <label class="col-sm-2 control-label">收货姓名</label>
+          <div class="col-sm-10">
+            <input type="text" name="user_name" class="form-control" placeholder="姓名">
+          </div>
         </div>
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layout')
 
 @section('content')
 
@@ -25,7 +25,7 @@
                     <td>{{ $order->price }}</td>
                     <td>{{ $order->created_at->format('Y-m-d H:i:s') }}</td>
                     <td>未支付</td>
-                    <td><a href="/order/detail/{{ $order->id }}">详情</a></td>
+                    <td><a href="/admin/order/detail/{{ $order->id }}">详情</a></td>
                   </tr>
                 @endforeach
               </tbody>

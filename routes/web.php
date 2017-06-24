@@ -19,6 +19,7 @@ Route::get('/cart/delete/{id}', 'FrontController@deleteCart');
 Route::get('/order', 'FrontController@order');
 Route::post('/order/post', 'FrontController@orderPost');
 Route::get('/order/list', 'FrontController@listOrder');
+Route::get('/order/detail/{id}', 'FrontController@detailOrder');
 
 Auth::routes();
 
@@ -35,6 +36,10 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/product/add', 'HomeController@addProduct');
     Route::post('/product/post', 'HomeController@postProduct');
     Route::get('/product/delete/{id?}', 'HomeController@deleteProduct');
+
+
+    Route::get('/order/list/', 'HomeController@orderList');
+    Route::get('/order/detail/{id}', 'HomeController@orderDetail');
 });
 
 

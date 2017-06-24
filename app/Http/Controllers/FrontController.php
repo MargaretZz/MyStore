@@ -9,6 +9,7 @@ use App\Product;
 use App\Category;
 use App\Cart;
 use App\Order;
+use App\OrderItem;
 
 class FrontController extends Controller
 {
@@ -102,13 +103,33 @@ class FrontController extends Controller
         foreach($carts as $cart)
         {
             $total += $cart->product->price;
-
         }
         $order->price = $total;
         $order->phone = $request->phone;
         $order->address = $request->address;
+        $order->user_name = $request->user_name;
         
         $order->save();
-        return;
+
+        
+        foreach($carts as $cart)
+        {
+            $orderItem = new OrderItem();
+            $orderItem->order_id = $order->id;
+            $orderItem->product_name = $cart->product->name;
+            $orderItem->product_price = $cart->product->price;
+            $orderItem->save();
+            $cart->delete();
+        }
+        
+        $orders = Order::where('user_id', Auth::user()->id)->get();
+        return view('front.listOrder', ['orders' => $orders]);
+    }
+
+    public function detailOrder(Request $request)
+    {
+        $order = Order::find($request->id);
+        $orderItems = OrderItem::where('order_id', $order->id)->get();
+        return view('orderDetail', ['order' => $order, 'orderItems' => $orderItems]);
     }
 }

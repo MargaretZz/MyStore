@@ -2,5 +2,6 @@
     <div class="list-group">
         <a href="/admin/category/list" class="list-group-item">分类管理</a>
         <a href="/admin/product/list" class="list-group-item">商品管理</a>
+        <a href="/admin/order/list" class="list-group-item">订单管理</a>
     </div>
 </div>
