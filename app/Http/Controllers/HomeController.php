@@ -36,6 +36,11 @@ class HomeController extends Controller
       return view('admin.addCategory');
     }
 
+    public function editProduct(Request $request)
+    {
+        $product = Product::find($request->id);
+        return view('admin.editProduct', ['product' => $product, 'categories' => Category::All()]);
+    } 
     public function postCategory(Request $request)
     {
         $category = new Category();

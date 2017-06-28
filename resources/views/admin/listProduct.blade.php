@@ -25,8 +25,8 @@
                                 </div>
                                 <p>{{$product->description}}</p>
                                 <div class="row">
-                                    <div class="col-md-6 col-md-offset-3">
-                                        <a href="/admin/product/delete/{{$product->id}}" class="btn btn-danger btn-product">删除</a></div>
+                                        <a href="/admin/product/delete/{{$product->id}}" class="btn btn-danger btn-product">删除</a>
+                                         <a href="/admin/product/edit/{{$product->id}}" class="btn btn-product">编辑</a>
                                 </div>
                             </div>
                         </div>

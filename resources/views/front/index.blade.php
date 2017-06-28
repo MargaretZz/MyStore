@@ -24,7 +24,7 @@
 
                     <div class="col-sm-6 col-md-4">
                         <div class="thumbnail" >
-                            <img src="{{$product->picture}}" class="img-responsive">
+                            <a href="/product/get/{{$product->id}}"><img src="{{$product->picture}}" class="img-responsive"></a>
                             <div class="caption">
                                 <div class="row">
                                     <div class="col-md-6 col-xs-6">
@@ -38,7 +38,7 @@
                                 <p>{{$product->description}}</p>
                                   <div class="row">
                                     <div class="col-md-6 col-md-offset-3">
-                                        <a href="/cart/add/{{$product->id}}"class="btn btn-success btn-product"><span class="fa fa-shopping-cart"></span> 购买</a>
+                                        <a href="/cart/add/{{$product->id}}"class="btn btn-success btn-product"><span class="fa fa-shopping-cart"></span>加入购物车</a>
                                     </div>
                                    </div>
                             </div>
