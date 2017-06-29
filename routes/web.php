@@ -38,6 +38,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/product/post', 'HomeController@postProduct');
     Route::get('/product/delete/{id?}', 'HomeController@deleteProduct');
     Route::get('/product/edit/{id}', 'HomeController@editProduct');
+    Route::post('/product/edit', 'HomeController@editPostProduct');
 
 
     Route::get('/order/list/', 'HomeController@orderList');

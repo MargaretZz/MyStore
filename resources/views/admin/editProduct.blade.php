@@ -7,10 +7,10 @@
             <div class="panel-title">新增商品</div>
         </div>
         <div class="panel-body" >
-            <form method="POST" action="/admin/product/post" class="form-horizontal" enctype="multipart/form-data" role="form">
+            <form method="POST" action="/admin/product/edit" class="form-horizontal" enctype="multipart/form-data" role="form">
                 {!! csrf_field() !!}
                 <fieldset>
-                     Text input
+                                            <input id="name" name="id" hidden value="{{$product->id}}"type="text">
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="name">名称</label>
                         <div class="col-md-9">

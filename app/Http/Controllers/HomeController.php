@@ -48,6 +48,24 @@ class HomeController extends Controller
         $category->save();
         return redirect('/home');
     }
+    public function editPostProduct(Request $request)
+    {
+        if ($request->file != null)
+            $path = $request->file('file')->store('public');
+
+        $product = Product::find($request->id);
+        $product->name = $request->name;
+        $product->stock = $request->stock;
+        $product->price = $request->price;
+        $product->description = $request->description;
+        $product->category = $request->category;
+        if ($request->file != null)
+            $product->picture = asset($path);
+        $product->save();
+
+        $products = Product::where('category', $request->category);
+        return redirect()->action('HomeController@listProduct'); 
+    }
 
     public function deleteCategory(Request $request)
     {
