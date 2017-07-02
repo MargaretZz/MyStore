@@ -97,52 +97,42 @@ class FrontController extends Controller
     {
         DB::beginTransaction();
         try {
-            $carts = Cart::where('user_id', Auth::user()->id)->get();
+            $carts = Cart::where('user_id', Auth::user()->id)->get(); // 获取用户购物车
 
-            $order = new Order();
+            $order = new Order();  // 新建订单
             $order->user_id = Auth::user()->id;
             $order->status = 0;
             
             $total = 0;
-            foreach($carts as $cart)
-            {
+            foreach($carts as $cart) {
                 $total += $cart->product->price;
             }
-            $order->price = $total;
+            $order->price = $total;  // 订单总价
             $order->phone = $request->phone;
             $order->address = $request->address;
             $order->user_name = $request->user_name;
-            
             $order->save();
-
             
-            foreach($carts as $cart)
-            {
+            foreach($carts as $cart) {
                 $product = Product::where('name', $cart->product->name)->first();
-                $product->stock -= 1;
-                if ($product->stock < 0) {
-                    
-                }
+                $product->stock -= 1; // 库存小于0时会引发异常
                 $product->save();
-                $orderItem = new OrderItem();
+                $orderItem = new OrderItem(); // 新建订单明细，保存订单中的每个商品交易
                 $orderItem->order_id = $order->id;
                 $orderItem->product_name = $cart->product->name;
                 $orderItem->product_price = $cart->product->price;
                 $orderItem->save();
-                $cart->delete();
+                $cart->delete(); // 删除购物车
             }
-            
-
-            DB::commit();
+            DB::commit(); // 提交事务
         } catch (\Exception $e) {
-            DB::rollback();//事务回滚
+            DB::rollback(); //检测到异常，事务回滚
             echo '<h1>库存不足!!</h1>';
             echo $e->getMessage();
             echo $e->getCode();
             return;
         }
         $orders = Order::where('user_id', Auth::user()->id)->get();
-
         return view('front.listOrder', ['orders' => $orders]);
     }
 
